@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="example.javatpoint.com.optionmenu.MainActivity">
+
+    <item  android:id="@+id/TSK"
+        android:title="TataSky"/>
+    <item  android:id="@+id/SUN"
+        android:title="Sun Direct"/>
+    <item  android:id="@+id/DSH"
+        android:title="Dish TV"/>
+    <item  android:id="@+id/VDH"
+        android:title="VideoCon D2H"/>
+    <item android:id="@+id/ART"
+        android:title="Airtel DTH"/>
+    
+</menu>

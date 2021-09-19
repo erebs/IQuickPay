@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EcommerceActivity">
+
+    <FrameLayout
+        android:id="@+id/frameLayoutEM"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/purple_200"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ripple_cr"
+                    android:clickable="true"
+                    android:onClick="goBack"
+                    android:padding="10dp"
+                    android:src="@drawable/baseline_keyboard_backspace_24"
+                    app:tint="@color/white" />
+
+
+                <EditText
+                    android:id="@+id/productSearchEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/input"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/baseline_search_20"
+                    android:drawablePadding="5dp"
+                    android:drawableTint="#66FFFFFF"
+                    android:gravity="center_vertical"
+                    android:hint="Search for Products..."
+                    android:lines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textColorHint="#66FFFFFF"
+                    android:textSize="14dp" />
+
+
+            </LinearLayout>
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                        android:id="@+id/carouselEM"
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        app:autoPlay="true"
+                        app:showBottomShadow="false"
+                        app:showNavigationButtons="false"
+                        app:showTopShadow="false" />
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

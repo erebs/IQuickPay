@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1E5FB2A2"
+    tools:context=".MobileRechargeActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="120dp"
+        android:scaleType="fitEnd"
+        android:src="@drawable/il_prepaid"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ripple_cr"
+            android:clickable="true"
+            android:onClick="goBack"
+            android:padding="10dp"
+            android:src="@drawable/baseline_keyboard_backspace_24"
+            app:tint="@color/purple_50" />
+
+        <TextView
+            android:id="@+id/rechargeType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Recharge"
+            android:textColor="@color/purple_50"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:id="@+id/scrollViewnew"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="-20dp"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mobile Number"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
+
+            <EditText
+                android:id="@+id/MobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/input"
+                android:gravity="center_vertical"
+                android:inputType="number"
+                android:maxLength="10"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Operator"
+                        android:textColor="@color/black"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/OperatorText"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/input"
+                        android:clickable="true"
+                        android:drawableRight="@drawable/outline_arrow_drop_down_24"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical"
+                        android:lines="1"
+                        android:onClick="Operator"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Circle"
+                        android:textColor="@color/black"
+                        android:textSize="12dp" />
+
+                    <TextView
+                        android:id="@+id/CircleText"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/input"
+                        android:clickable="true"
+                        android:drawableRight="@drawable/outline_arrow_drop_down_24"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical"
+                        android:lines="1"
+                        android:onClick="Circle"
+                        android:padding="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="14dp" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/SpecialBox"
+                android:layout_width="200dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_height="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/TopUpBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Top Up"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:onClick="TopUpBtn"
+                    android:background="@drawable/lbtn"
+                    android:textColor="@color/white"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_weight="1"
+                    android:id="@+id/SpecialBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:text="Special"
+                    android:background="@drawable/rbtnd"
+                    android:onClick="SpecialBtn"
+                    android:textColor="@color/white"
+                    android:textSize="13dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="₹"
+                    android:textColor="@color/black"
+                    android:textSize="30dp" />
+
+                <EditText
+                    android:id="@+id/Amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="0"
+                    android:inputType="number"
+                    android:textColor="@color/black"
+                    android:textColorHint="#603DB09F"
+                    android:textSize="30dp" />
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/RechargeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Recharge Now"
+                android:onClick="RechargeBtn"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/PlanText"
+                android:visibility="gone"
+                android:orientation="vertical">
+                
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"
+                    android:text="Recharge Plans"
+                    android:textSize="14dp"/>
+
+
+                <HorizontalScrollView
+                    android:id="@+id/plansSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:elevation="5dp">
+
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Topup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:text="Top up"
+                            android:onClick="Topup"
+                            android:gravity="center"
+                            android:textSize="13dp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:background="@drawable/ripple_box"
+                            android:textColor="@color/purple_50"/>
+
+                        <TextView
+                            android:id="@+id/FullTalktime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:text="Full Talktime"
+                            android:gravity="center"
+                            android:onClick="FullTalktime"
+                            android:textSize="13dp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:background="@drawable/ripple"
+                            android:textColor="@color/purple_50"/>
+
+                        <TextView
+                            android:id="@+id/SMS"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:text="SMS"
+                            android:gravity="center"
+                            android:onClick="SMS"
+                            android:textSize="13dp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:background="@drawable/ripple"
+                            android:textColor="@color/purple_50"/>
+
+                        <TextView
+                            android:id="@+id/G2Data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:text="2G Data"
+                            android:gravity="center"
+                            android:onClick="G2Data"
+                            android:textSize="13dp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:background="@drawable/ripple"
+                            android:textColor="@color/purple_50"/>
+
+                        <TextView
+                            android:id="@+id/G3Data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:text="3G Data"
+                            android:gravity="center"
+                            android:onClick="G3Data"
+                            android:textSize="13dp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:background="@drawable/ripple"
+                            android:textColor="@color/purple_50"/>
+
+                        <TextView
+                            android:id="@+id/G4Data"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:text="4G Data"
+                            android:gravity="center"
+                            android:onClick="G4Data"
+                            android:textSize="13dp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:background="@drawable/ripple"
+                            android:textColor="@color/purple_50"/>
+
+                        <TextView
+                            android:id="@+id/Local"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:text="Local"
+                            android:gravity="center"
+                            android:onClick="Local"
+                            android:textSize="13dp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:background="@drawable/ripple"
+                            android:textColor="@color/purple_50"/>
+
+                        <TextView
+                            android:id="@+id/STD"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:text="STD"
+                            android:gravity="center"
+                            android:onClick="STD"
+                            android:textSize="13dp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:background="@drawable/ripple"
+                            android:textColor="@color/purple_50"/>
+
+                        <TextView
+                            android:id="@+id/ISD"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:text="ISD"
+                            android:gravity="center"
+                            android:onClick="ISD"
+                            android:textSize="13dp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:background="@drawable/ripple"
+                            android:textColor="@color/purple_50"/>
+
+
+                        <TextView
+                            android:id="@+id/Roaming"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:text="Roaming"
+                            android:gravity="center"
+                            android:onClick="Roaming"
+                            android:textSize="13dp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:background="@drawable/ripple"
+                            android:textColor="@color/purple_50"/>
+
+
+                        <TextView
+                            android:id="@+id/Other"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:text="Other"
+                            android:gravity="center"
+                            android:onClick="Other"
+                            android:textSize="13dp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:background="@drawable/ripple"
+                            android:textColor="@color/purple_50"/>
+
+
+                        <TextView
+                            android:id="@+id/Validity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:text="Validity"
+                            android:gravity="center"
+                            android:onClick="Validity"
+                            android:textSize="13dp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:background="@drawable/ripple"
+                            android:textColor="@color/purple_50"/>
+
+
+                        <TextView
+                            android:id="@+id/Plan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:text="Plan"
+                            android:gravity="center"
+                            android:onClick="Plan"
+                            android:textSize="13dp"
+                            android:textStyle="bold"
+                            android:clickable="true"
+                            android:background="@drawable/ripple"
+                            android:textColor="@color/purple_50"/>
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/placesViewFrag"/>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
