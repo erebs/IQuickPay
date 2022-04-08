@@ -20,9 +20,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.kaopiz.kprogresshud.KProgressHUD;
+import com.ravikoradiya.zoomableimageview.ZoomableImageView;
 
 import org.imaginativeworld.whynotimagecarousel.CarouselItem;
+import org.imaginativeworld.whynotimagecarousel.CarouselType;
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,32 +34,47 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import de.mateware.snacky.Snacky;
+import in.iquick.client.models.Categories;
+import in.iquick.client.models.Products;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageCarousel carousel;
+    ImageCarousel carousel, imageCarousel;
     List<CarouselItem> list = new ArrayList<>();
+    List<CarouselItem> carouselImage  = new ArrayList<>();
     TextView mainBalance,Totalsale,clientName;
     ScrollTextView MarqueeText;
     SharedPreferences sharedPreferences;
     KProgressHUD Loader;
     ImageView RefreshBtn;
     ProgressBar progressBar;
+    ZoomableImageView AdvertismentsImage;
+    String CountryCode;
+    JRequest jRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         carousel = findViewById(R.id.carousel);
+        imageCarousel = findViewById(R.id.imageCarouselMA);
+
+        imageCarousel.setCarouselType(CarouselType.SHOWCASE);
+        imageCarousel.setShowNavigationButtons(false);
+        imageCarousel.setScaleOnScroll(true);
+        imageCarousel.setItemLayout(R.layout.custom_fixed_size_item_layout);
+        imageCarousel.setImageViewId(R.id.image_view);
 
         mainBalance = findViewById(R.id.mainBalance);
         Totalsale = findViewById(R.id.Totalsale);
         clientName = findViewById(R.id.clientName);
         RefreshBtn = findViewById(R.id.RefreshBtn);
         progressBar = findViewById(R.id.progressBar);
+        AdvertismentsImage = findViewById(R.id.AdvertismentsImageMA);
 
         list.add(new CarouselItem("http://ieeesbjcet.org/defaults/bn1.jpg",""));
         list.add(new CarouselItem("http://ieeesbjcet.org/defaults/bn2.jpg",""));
@@ -75,6 +93,17 @@ public class MainActivity extends AppCompatActivity {
         HomeAPI(sharedPreferences.getString("username",""),sharedPreferences.getString("password",""));
         RechargesStatus();
         Marquee();
+        SliderApi();
+
+        CountryCode = sharedPreferences.getString("countryCode","");
+        if (CountryCode.toLowerCase(Locale.ROOT).equalsIgnoreCase("in"))
+        {
+            findViewById(R.id.ecomView).setVisibility(View.VISIBLE);
+        }else
+        {
+            findViewById(R.id.ecomView).setVisibility(View.GONE);
+        }
+
     }
 
     public void RefreshBtn(View view)
@@ -93,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         HomeAPI(sharedPreferences.getString("username",""),sharedPreferences.getString("password",""));
         RechargesStatus();
         Marquee();
+        AdvertismentApi();
         super.onResume();
 
     }
@@ -413,6 +443,93 @@ public class MainActivity extends AppCompatActivity {
         request.setRetryPolicy(new DefaultRetryPolicy(1000, 1, 1.0f));
         queue.add(request);
 
+    }
+
+
+    public void AdvertismentApi()
+    {
+
+        try {
+            JSONObject RequestJson = new JSONObject();
+            RequestJson.put("id", "");
+
+            jRequest = new JRequest(RequestJson, "advertisment", true, this, new JRequest.TaskCompleteListener() {
+                @Override
+                public void onTaskComplete(String result) throws JSONException {
+                    Loader.dismiss();
+
+                    JSONObject Res = new JSONObject(result);
+                    String sts     = Res.getString("sts");
+                    String msg     = Res.getString("msg");
+
+
+                    if(sts.equalsIgnoreCase("01"))
+                    {
+                        String advertismentsImage="";
+                        //Sliders
+                        String advertismentsArrays = Res.getString("advertisments");
+                        JSONArray advertismentsArray = new JSONArray(advertismentsArrays);
+                        String advertismentsObject = advertismentsArray.getString(0);
+                        JSONObject AdvertismentsDetails = new JSONObject(advertismentsObject);
+
+                            advertismentsImage = getString(R.string.ecom_assets_url) + AdvertismentsDetails.getString("image");
+                            Glide.with(getApplicationContext()).load(advertismentsImage).into(AdvertismentsImage);
+                    }
+                    else
+                        Snacky.builder().setActivity(getParent()).setText(msg).setDuration(Snacky.LENGTH_LONG).build().show();
+
+                }
+            });
+            jRequest.execute();
+        } catch ( JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void SliderApi()
+    {
+
+        try {
+            JSONObject RequestJson = new JSONObject();
+            RequestJson.put("id", "");
+
+            jRequest = new JRequest(RequestJson, "mainbanners", true, this, new JRequest.TaskCompleteListener() {
+                @Override
+                public void onTaskComplete(String result) throws JSONException {
+                    Loader.dismiss();
+
+                    JSONObject Res = new JSONObject(result);
+                    String sts     = Res.getString("sts");
+                    String msg     = Res.getString("msg");
+
+
+                    if(sts.equalsIgnoreCase("01"))
+                    {
+                        //Sliders
+                        String slidersArrays = Res.getString("banners");
+                        JSONArray slidersArray = new JSONArray(slidersArrays);
+
+                        carouselImage.clear();
+                        for (int i = 0; i < slidersArray.length(); i++)
+                        {
+                            String SliderObjectString = slidersArray.getString(i);
+                            JSONObject SliderObject = new JSONObject(SliderObjectString);
+                            String sliderImageUrl = getString(R.string.ecom_assets_url) + SliderObject.getString("image");
+                            carouselImage.add(new CarouselItem(sliderImageUrl));
+                        }
+                        imageCarousel.addData(carouselImage);
+                        imageCarousel.setAutoPlay(true);
+                    }
+                    else
+                        Snacky.builder().setActivity(getParent()).setText(msg).setDuration(Snacky.LENGTH_LONG).build().show();
+
+                }
+            });
+            jRequest.execute();
+        } catch ( JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 }

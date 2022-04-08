@@ -4,6 +4,8 @@
     <string name="dthcusinfo">https://api.datayuge.com/api/v1/dth/customer/details?apikey=EDJ99qq7MhGJ6nnM0H0xjvrWPCc4746O</string>
     <string name="mdet">https://api.datayuge.com/api/v1/lookup/mnp/seclob?apikey=EDJ99qq7MhGJ6nnM0H0xjvrWPCc4746O&amp;number=</string>
     <string name="api_url">https://iquickpay.in/api/</string>
+    <string name="ecom_api_url">https://iquickpay.in/ecommerce/public/api/</string>
+    <string name="ecom_assets_url">https://iquickpay.in/ecommerce/public</string>
     <string name="site_url">https://iquickpay.in/app/</string>
     <string name="ere_api">https://erebs.in/api/</string>
 </resources>

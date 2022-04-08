@@ -54,272 +54,366 @@
     </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="left|top"
-        android:orientation="vertical"
-        android:padding="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+   <ScrollView
+       android:layout_width="match_parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintEnd_toEndOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+       android:layout_height="0dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:gravity="left|top"
+           android:orientation="vertical"
+           android:padding="20dp"
+           >
 
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Recharge ID"
-                android:textColor="#000"
-                android:textSize="12dp" />
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="vertical">
 
-
-            <TextView
-                android:id="@+id/RechargeID_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#000"
-                android:textStyle="bold" />
+               <TextView
+                   android:layout_width="250dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:text="Recharge ID"
+                   android:textColor="#000"
+                   android:textSize="12dp" />
 
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Operator"
-                android:textColor="#000"
-                android:textSize="12dp" />
+               <TextView
+                   android:id="@+id/RechargeID_details"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:textColor="#000"
+                   android:textStyle="bold" />
 
 
-            <TextView
-                android:id="@+id/RechOp_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#000"
-                android:textStyle="bold" />
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="4dp"
+               android:orientation="vertical">
+
+               <TextView
+                   android:layout_width="250dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:text="Operator"
+                   android:textColor="#000"
+                   android:textSize="12dp" />
 
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Mobile Number"
-                android:textColor="#000"
-                android:textSize="12dp" />
-
-            <TextView
-                android:id="@+id/RechMob_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#000"
-                android:textStyle="bold" />
+               <TextView
+                   android:id="@+id/RechOp_details"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:textColor="#000"
+                   android:textStyle="bold" />
 
 
-        </LinearLayout>
+           </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:orientation="vertical">
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="4dp"
+               android:orientation="vertical">
 
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Type"
-                android:textColor="#000"
-                android:textSize="12dp" />
+               <TextView
+                   android:layout_width="250dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:text="Number"
+                   android:textColor="#000"
+                   android:textSize="12dp" />
 
-
-            <TextView
-                android:id="@+id/RechType_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#000"
-                android:textStyle="bold" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Circle"
-                android:textColor="#000"
-                android:textSize="12dp" />
+               <TextView
+                   android:id="@+id/RechMob_details"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:textColor="#000"
+                   android:textStyle="bold" />
 
 
-            <TextView
-                android:id="@+id/RechOffType_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#000"
-                android:textStyle="bold" />
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="4dp"
+               android:orientation="vertical">
+
+               <TextView
+                   android:layout_width="250dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:text="Type"
+                   android:textColor="#000"
+                   android:textSize="12dp" />
 
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Amount"
-                android:textColor="#000"
-                android:textSize="12dp" />
+               <TextView
+                   android:id="@+id/RechType_details"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:textColor="#000"
+                   android:textStyle="bold" />
 
 
-            <TextView
-                android:id="@+id/RechAmount_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#000"
-                android:textStyle="bold" />
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="4dp"
+               android:orientation="vertical">
+
+               <TextView
+                   android:layout_width="250dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:text="Circle"
+                   android:textColor="#000"
+                   android:textSize="12dp" />
 
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Date &amp; Time"
-                android:textColor="#000"
-                android:textSize="12dp" />
+               <TextView
+                   android:id="@+id/RechOffType_details"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:textColor="#000"
+                   android:textStyle="bold" />
 
 
-            <TextView
-                android:id="@+id/RechDT_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="#000"
-                android:textStyle="bold" />
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="4dp"
+               android:orientation="vertical">
+
+               <TextView
+                   android:layout_width="250dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:text="Amount"
+                   android:textColor="#000"
+                   android:textSize="12dp" />
 
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Status"
-                android:textColor="#000"
-                android:textSize="12dp" />
+               <TextView
+                   android:id="@+id/RechAmount_details"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:textColor="#000"
+                   android:textStyle="bold" />
 
 
-            <TextView
-                android:id="@+id/RechSts_details"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textAllCaps="true"
-                android:textColor="#000"
-                android:textStyle="bold" />
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="4dp"
+               android:orientation="vertical">
+
+               <TextView
+                   android:layout_width="250dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:text="Date &amp; Time"
+                   android:textColor="#000"
+                   android:textSize="12dp" />
 
 
-        </LinearLayout>
+               <TextView
+                   android:id="@+id/RechDT_details"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:textColor="#000"
+                   android:textStyle="bold" />
 
 
-    </LinearLayout>
+           </LinearLayout>
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="4dp"
+               android:orientation="vertical">
+
+               <TextView
+                   android:layout_width="250dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:text="Status"
+                   android:textColor="#000"
+                   android:textSize="12dp" />
+
+
+               <TextView
+                   android:id="@+id/RechSts_details"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="1"
+                   android:textAllCaps="true"
+                   android:textColor="#000"
+                   android:textStyle="bold" />
+
+
+           </LinearLayout>
+
+
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:visibility="gone"
+               android:id="@+id/dBox"
+               android:orientation="vertical"
+               android:background="@drawable/ripple_border"
+               android:layout_marginTop="20dp">
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Despute"
+                   android:textStyle="bold"
+                   android:textAllCaps="true"
+                   android:textColor="@color/white"
+                   android:background="@drawable/ripple_border_top"
+                   android:padding="5dp"
+                   android:gravity="center"/>
+
+
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Your Comments"
+                   android:textStyle="bold"
+                   android:layout_marginTop="15dp"
+                   android:textSize="12dp"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginRight="10dp"
+                   android:layout_marginBottom="-5dp"
+                   android:textColor="@color/black"/>
+
+
+               <EditText
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:minHeight="80dp"
+                   android:id="@+id/c_comments"
+                   android:textSize="12dp"
+                   android:layout_margin="10dp"
+                   android:textColor="@color/black"
+                   android:background="@drawable/ripple_border"
+                   android:padding="10dp"
+                   android:gravity="left|top"
+                   android:hint="Enter your despute commets"
+                   android:textColorHint="@color/dull"/>
+
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginRight="10dp"
+                   android:layout_marginLeft="10dp"
+                   android:id="@+id/stsBox"
+                   android:layout_marginBottom="10dp"
+                   android:orientation="horizontal">
+
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="Status"
+                       android:textStyle="bold"
+                       android:layout_weight="1"
+                       android:textSize="12dp"
+                       android:textColor="@color/black"/>
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="New"
+                       android:id="@+id/a_sts"
+                       android:textStyle="bold"
+                       android:textSize="12dp"
+                       android:padding="10dp"
+                       android:background="@drawable/success"
+                       android:textColor="@color/white"/>
+
+               </LinearLayout>
+
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="-10dp"
+                   android:id="@+id/aBox"
+                   android:orientation="vertical">
+
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginLeft="10dp"
+                       android:layout_marginTop="15dp"
+                       android:layout_marginRight="10dp"
+                       android:layout_marginBottom="-5dp"
+                       android:text="Admin's Reply"
+                       android:textColor="@color/black"
+                       android:textSize="12dp"
+                       android:textStyle="bold" />
+
+
+                   <TextView
+                       android:id="@+id/a_comments"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_margin="10dp"
+                       android:background="@drawable/ripple_border"
+                       android:gravity="left|top"
+                       android:padding="10dp"
+                       android:textColor="@color/black"
+                       android:textColorHint="@color/black"
+                       android:textSize="12dp" />
+
+               </LinearLayout>
+
+               <Button
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="10dp"
+                   android:onClick="SubmitBtn"
+                   android:layout_marginRight="10dp"
+                   android:layout_marginBottom="10dp"
+                   android:text="Submit"/>
+
+           </LinearLayout>
+
+       </LinearLayout>
+
+
+   </ScrollView>
 
 
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/purple_700"
-            android:gravity="center"
-            android:onClick="complaintBtn"
-            android:padding="15dp"
-            android:visibility="gone"
-            android:text="Raise a complaint"
-            android:textColor="@color/white" />
 
 
-        <View
-            android:id="@+id/divider2"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="?android:attr/listDivider" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/purple_700"
-            android:visibility="gone"
-            android:gravity="center"
-            android:onClick="ShareApp"
-            android:padding="15dp"
-            android:text="Share this Information"
-            android:textColor="@color/white" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

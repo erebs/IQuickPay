@@ -2,11 +2,14 @@ package in.iquick.client;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,10 +35,20 @@ public class MobileRechargeDetailsActivity extends AppCompatActivity {
     TextView RechID,RechMobile,Operator,Type,Offer,Amt,Date,Status;
     KProgressHUD Loader;
 
+    TextView aSts,aCmts;
+    LinearLayout aBox, stsBox;
+    EditText cCmts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mobile_recharge_details);
+
+        aSts = findViewById(R.id.a_sts);
+        aCmts = findViewById(R.id.a_comments);
+        aBox = findViewById(R.id.aBox);
+        stsBox = findViewById(R.id.stsBox);
+        cCmts  = findViewById(R.id.c_comments);
 
         RechID = findViewById(R.id.RechargeID_details);
         RechMobile = findViewById(R.id.RechMob_details);
@@ -62,6 +75,8 @@ public class MobileRechargeDetailsActivity extends AppCompatActivity {
         }catch (Exception e)
         {
         }
+
+        GetDesputeApi();
 
     }
 
@@ -164,21 +179,132 @@ public class MobileRechargeDetailsActivity extends AppCompatActivity {
 
     }
 
+    public void GetDesputeApi()
+    {
+        RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
+        String URL = getString(R.string.api_url)+"get/dispute?rech_id="+RechargeID;
+        StringRequest request = new StringRequest(Request.Method.GET, URL,
+                new Response.Listener<String>()
+                {
+                    @SuppressLint("UseCompatLoadingForDrawables")
+                    @Override
+                    public void onResponse(String response) {
+                        findViewById(R.id.dBox).setVisibility(View.VISIBLE);
+
+
+                        Log.i("VOLLEYES", response);
+                        try {
+                            JSONObject Res=new JSONObject(response);
+                            String sts    = Res.getString("sts");
+                            String msg    = Res.getString("msg");
+
+                            if(sts.equalsIgnoreCase("01"))
+                            {
+                                aBox.setVisibility(View.VISIBLE);
+                                stsBox.setVisibility(View.VISIBLE);
+
+                                String data = Res.getString("dispute");
+                                if(!data.equalsIgnoreCase("null")) {
+                                    JSONObject rst = new JSONObject(data);
+                                    String ssssts =rst.getString("status");
+                                    
+                                    if(ssssts.equalsIgnoreCase("New"))
+                                        aSts.setBackground(getDrawable(R.drawable.neww));
+                                    else if(ssssts.equalsIgnoreCase("Completed"))
+                                        aSts.setBackground(getDrawable(R.drawable.success));
+                                    else
+                                        aSts.setBackground(getDrawable(R.drawable.danger));
+
+                                    aSts.setText(ssssts);
+                                    cCmts.setText(rst.getString("desc"));
+                                    String acm = rst.getString("comment");
+                                    if (acm.length() > 0)
+                                        aBox.setVisibility(View.VISIBLE);
+                                    else
+                                        aBox.setVisibility(View.GONE);
+                                    aCmts.setText(acm);
+                                }
+                                else
+                                {
+                                    aBox.setVisibility(View.GONE);
+                                    stsBox.setVisibility(View.GONE);
+                                }
+                            }else
+                            {
+                                Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                            }
+
+                        }catch (Exception e){
+                            Log.e("catcherror",e+"d");
+
+                            Toast.makeText(getApplicationContext(), "Catch Error :"+e, Toast.LENGTH_SHORT).show();
+
+                        }
+
+
+                    }
+                },
+                new Response.ErrorListener()
+                {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        NetworkResponse response = error.networkResponse;
+                        String errorMsg = "";
+                        if(response != null && response.data != null){
+                            String errorString = new String(response.data);
+                            Log.i("log error", errorString);
+                            Toast.makeText(getApplicationContext(), "Network Error :"+errorString, Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                }
+        ) {
+
+
+            @Override
+            protected Map<String, String> getParams()
+            {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("mreach_id",RechargeID);
+                Log.i("loginp ", params.toString());
+
+                return params;
+            }
+
+        };
+
+
+        // Add the realibility on the connection.
+        request.setShouldCache(false);
+        request.setRetryPolicy(new DefaultRetryPolicy(10000, 1, 1.0f));
+
+        // Start the request immediately
+        queue.add(request);
+
+    }
+
     public void goBack(View view)
     {
         super.onBackPressed();
     }
 
 
-    public void complaintBtn(View view)
-    {ChangeStatus("Refresh");}
+    public void SubmitBtn(View view)
+    {
+        if (cCmts.length()>0)
+            CreateDespute(cCmts.getText().toString());
+        else
+            Toast.makeText(getApplicationContext(), "Comment Box can't be empty!", Toast.LENGTH_SHORT).show();
+    }
 
-    public void ChangeStatus(final String ssts)
+    public void CreateDespute(final String cmts)
     {
         Loader.show();
         RequestQueue queue = Volley.newRequestQueue(getApplicationContext());
-        String URL = getString(R.string.api_url)+"mobilereachargestatus";
-        StringRequest request = new StringRequest(Request.Method.POST, URL,
+        String URL = getString(R.string.api_url)+"create/dispute?user_id="+sharedPreferences.getString("id","")
+                +"&rech_id="+RechargeID+"&desc="+cmts+"&number="+RechMobile.getText().toString();
+        StringRequest request = new StringRequest(Request.Method.GET, URL,
                 new Response.Listener<String>()
                 {
                     @Override
@@ -194,8 +320,7 @@ public class MobileRechargeDetailsActivity extends AppCompatActivity {
 
                             if(sts.equalsIgnoreCase("01"))
                             {
-
-                                KsebRechargeApi();
+                                GetDesputeApi();
                             }else
                             {
                                 Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
@@ -234,8 +359,10 @@ public class MobileRechargeDetailsActivity extends AppCompatActivity {
             protected Map<String, String> getParams()
             {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("mreach_id",RechargeID);
-                params.put("status",ssts);
+                params.put("user_id",sharedPreferences.getString("id",""));
+                params.put("rech_id",RechargeID);
+                params.put("number",RechMobile.getText().toString());
+                params.put("desc",cmts);
 
                 Log.i("loginp ", params.toString());
 

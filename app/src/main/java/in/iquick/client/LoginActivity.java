@@ -122,7 +122,8 @@ public class LoginActivity extends AppCompatActivity {
                                 finish();
                             }
                             else
-                            showMsg(msg);
+                            Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+
 
                         }
                         catch (Exception e)
@@ -237,7 +238,7 @@ public class LoginActivity extends AppCompatActivity {
             {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("phone",username);
-                Log.i("loginp ", params.toString());
+                Log.i("Log", params.toString());
                 return params;
             }
         };
@@ -248,19 +249,7 @@ public class LoginActivity extends AppCompatActivity {
 
     void showMsg(String Msg)
     {
-        Snacky.builder()
-                .setActivity(LoginActivity.this)
-//                .setActionText("ACTION")
-                .setActionClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        //do something
-                    }
-                })
-                .setText(Msg)
-                .setDuration(Snacky.LENGTH_LONG)
-                .build()
-                .show();
+        Snacky.builder().setActivity(getParent()).setText(Msg).setDuration(Snacky.LENGTH_LONG).build().show();
     }
 
 }

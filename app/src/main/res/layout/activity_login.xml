@@ -138,24 +138,11 @@
 
             </FrameLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Forgot Password ?"
-                android:background="@drawable/ripple"
-                android:clickable="true"
-                android:textStyle="bold"
-                android:layout_gravity="right"
-                android:onClick="ForgotPassword"
-                android:padding="10dp"
-                android:textColor="@color/purple_50"
-                android:textSize="12dp"/>
-
             <Button
                 android:onClick="LoginBtn"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="5px"
                 android:text="Login"/>
 

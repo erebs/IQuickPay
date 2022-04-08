@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="95dp"
+    android:layout_margin="5dp"
+    android:layout_height="110dp">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="75dp"
+        android:layout_marginTop="5dp"
+        android:layout_height="75dp"
+        android:layout_gravity="center_horizontal"
+        app:cardCornerRadius="80dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/categoryImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:src="@drawable/place_holder"
+            android:scaleType="fitCenter"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3px"
+            android:layout_gravity="bottom"
+            android:background="?android:attr/listDivider" />
+
+        <View
+            android:id="@+id/categoryBottomLine"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom"
+            android:background="@color/purple_50" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_gravity="left"
+            android:background="?android:attr/listDivider" />
+
+        <View
+            android:layout_width="1px"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:background="?android:attr/listDivider" />
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/categoryLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:clickable="true"/>
+
+    <TextView
+        android:id="@+id/categoryName"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:lines="1"
+        android:layout_gravity="bottom"
+        android:text="Name"
+        android:textStyle="bold"
+        android:paddingRight="5dp"
+        android:paddingLeft="5dp"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+</FrameLayout>

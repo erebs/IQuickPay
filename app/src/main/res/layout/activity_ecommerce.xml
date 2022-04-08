@@ -31,7 +31,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/ripple_cr"
+                    android:background="@drawable/ripple_round"
                     android:clickable="true"
                     android:onClick="goBack"
                     android:padding="10dp"
@@ -39,10 +39,11 @@
                     app:tint="@color/white" />
 
 
-                <EditText
-                    android:id="@+id/productSearchEdit"
+                <TextView
+                    android:onClick="gotoSearch"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_weight="1"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/input"
@@ -58,13 +59,42 @@
                     android:textColorHint="#66FFFFFF"
                     android:textSize="14dp" />
 
+                <FrameLayout
+                    android:layout_width="50dp"
+                    android:onClick="gotoCart"
+                    android:layout_height="50dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_baseline_shopping_bag_24"
+                        android:padding="12dp"
+                        app:tint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/tv_cart_count_ea"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_margin="8dp"
+                        android:visibility="gone"
+                        android:background="@drawable/circle"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:text="10"
+                        android:textColor="@color/white"
+                        android:textSize="10dp"
+                        android:textStyle="bold" />
+
+                </FrameLayout>
 
             </LinearLayout>
 
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="0dp">
+                android:nestedScrollingEnabled="false"
+                android:layout_height="match_parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -74,15 +104,134 @@
                     <org.imaginativeworld.whynotimagecarousel.ImageCarousel
                         android:id="@+id/carouselEM"
                         android:layout_width="match_parent"
-                        android:layout_height="130dp"
+                        android:layout_height="140dp"
                         app:autoPlay="true"
                         app:showBottomShadow="false"
                         app:showNavigationButtons="false"
                         app:showTopShadow="false" />
 
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/CategoryRecycleviewEM"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#eee" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Featured Products"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:padding="10dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_marginTop="-8dp"
+                            android:id="@+id/featuredProductsRecycleviewEM"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Populars Products"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:padding="10dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#fff">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_marginTop="-8dp"
+                            android:id="@+id/popularsProductsRecycleviewEM"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Trending Products"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:padding="10dp"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="-8dp"
+                        android:layout_height="wrap_content"
+                        android:background="#fff">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/trendingProductsRecycleviewEM"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </RelativeLayout>
+
                 </LinearLayout>
 
             </ScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ishopSplash"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:gravity="center"
+            android:background="@color/white">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/logo"/>
+
+                <ProgressBar
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="60dp"
+                    android:layout_gravity="center"
+                    android:layout_height="60dp" />
+
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IQUICK SHOPPING"
+                android:textSize="14dp"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 

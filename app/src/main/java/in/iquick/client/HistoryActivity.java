@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -31,6 +32,7 @@ import com.kaopiz.kprogresshud.KProgressHUD;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.michaelbel.bottomsheet.BottomSheet;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -53,6 +55,9 @@ public class HistoryActivity extends AppCompatActivity {
     String Status,fromdate="",todate="",District,Dvalue="";
     LinearLayout dateView;
     KProgressHUD Loader;
+    String[] pages = {"10","20","50","100","200","500","1000"};
+    BottomSheet.Builder builder;
+    String Limit = "10";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -213,7 +218,7 @@ public class HistoryActivity extends AppCompatActivity {
         { fromdate = "&fdate=&tdate="; }
         }else
         { fromdate = "&fdate=&tdate="; }
-        String URL = getString(R.string.api_url)+"shop/recharges?type="+Dvalue+"&user_id="+sharedPreferences.getString("id","")+"&limit=1000&offset=0"+Status+fromdate;
+        String URL = getString(R.string.api_url)+"shop/recharges?type="+Dvalue+"&user_id="+sharedPreferences.getString("id","")+"&limit="+Limit+"&offset=0"+Status+fromdate;
         // Toast.makeText(this, URL, Toast.LENGTH_SHORT).show();
         Log.e("URL",URL);
         StringRequest request = new StringRequest(Request.Method.GET, URL,
@@ -296,7 +301,7 @@ public class HistoryActivity extends AppCompatActivity {
                 {
                     params.put("status","Refresh");
                 }
-                params.put("limit","500");
+                params.put("limit",Limit);
                 Log.i("loginp ", params.toString());
 
                 return params;
@@ -312,6 +317,26 @@ public class HistoryActivity extends AppCompatActivity {
         // Start the request immediately
         queue.add(request);
 
+    }
+
+
+    public void NumbersBtn(View view)
+    {
+        {
+            builder = new BottomSheet.Builder(this);
+            builder.setTitle("Choose numbers");
+            builder.setContentType(BottomSheet.LIST);
+            builder.setItems(pages, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                    Limit = pages[which];
+                    GetStatement();
+
+                }
+            });
+            builder.show();
+        }
     }
 
 }

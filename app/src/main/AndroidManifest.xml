@@ -18,6 +18,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
         <activity
+            android:name=".OrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CartActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SearchActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ProductActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SubCategoryActivity"
+            android:exported="true" />
+        <activity
             android:name=".EcommerceActivity"
             android:exported="true" />
         <activity

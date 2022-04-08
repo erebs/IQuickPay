@@ -57,6 +57,18 @@
             android:src="@drawable/outline_date_range_24"
             app:tint="@color/white" />
 
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/btn"
+            android:clickable="true"
+            android:onClick="NumbersBtn"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_baseline_format_list_numbered_24"
+            app:tint="@color/white" />
+
 
     </LinearLayout>
 

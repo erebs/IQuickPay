@@ -28,6 +28,17 @@
                 android:layout_height="160dp">
 
                 <ImageView
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="top|right"
+                    android:layout_margin="15dp"
+                    android:background="@drawable/ripple"
+                    android:clickable="true"
+                    android:onClick="ContactUs"
+                    android:padding="10dp"
+                    android:src="@drawable/support" />
+
+                <ImageView
                     android:layout_width="110dp"
                     android:layout_height="110dp"
                     android:layout_gravity="right|bottom"
@@ -158,20 +169,20 @@
                 <!--                    android:focusableInTouchMode="true"-->
                 <!--                    android:freezesText="true"-->
 
-                <in.iquick.client.ScrollTextView
-                    android:id="@+id/MarqueeText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/purple_700"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:gravity="center_vertical"
-                    android:padding="10dp"
-                    android:scrollHorizontally="true"
-                    android:singleLine="true"
-                    android:textColor="#292929"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
+            <in.iquick.client.ScrollTextView
+                android:id="@+id/MarqueeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/purple_700"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:padding="10dp"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textColor="#292929"
+                android:textSize="14dp"
+                android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -213,7 +224,6 @@
                             android:padding="5dp"
                             android:scaleType="centerCrop"
                             android:src="@drawable/il_prepaid" />
-
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -460,8 +470,20 @@
                     app:cardCornerRadius="0dp">
 
                     <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                        android:id="@+id/imageCarouselMA"
+                        android:layout_width="match_parent"
+                        android:layout_height="140dp"
+                        app:autoPlay="true"
+                        android:clickable="true"
+                        android:onClick="EcommerceBtn"
+                        app:showBottomShadow="false"
+                        app:showNavigationButtons="false"
+                        app:showTopShadow="false" />
+
+                    <org.imaginativeworld.whynotimagecarousel.ImageCarousel
                         android:id="@+id/carousel"
                         android:layout_width="match_parent"
+                        android:visibility="gone"
                         android:layout_height="130dp"
                         app:autoPlay="true"
                         app:showBottomShadow="false"
@@ -470,9 +492,27 @@
 
                 </androidx.cardview.widget.CardView>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ecomView"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="5dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:clickable="true"
+                    android:onClick="EcommerceBtn"
+                    android:src="@drawable/ecommerce_banner"
+                    android:scaleType="centerCrop"/>
+
+                </androidx.cardview.widget.CardView>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
+                    android:visibility="gone"
                     android:orientation="horizontal"
                     android:padding="10dp">
 
@@ -480,6 +520,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:visibility="gone"
                         android:background="@drawable/ripple"
                         android:clickable="true"
                         android:gravity="center"
@@ -509,33 +550,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/ripple"
                         android:clickable="true"
-                        android:gravity="center"
-                        android:onClick="EcommerceBtn"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:padding="5dp"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ecom" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-medium"
-                            android:text="Ecommerce"
-                            android:textColor="#000"
-                            android:textSize="10dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/ripple"
-                        android:clickable="true"
+                        android:visibility="gone"
                         android:gravity="center"
                         android:onClick="ShopMainBtn"
                         android:orientation="vertical">
@@ -558,35 +573,35 @@
                     </LinearLayout>
 
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/ripple"
-                        android:clickable="true"
-                        android:gravity="center"
-                        android:onClick="ContactUs"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:padding="5dp"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/support" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-medium"
-                            android:text="Contact Us"
-                            android:textColor="#000"
-                            android:textSize="10dp" />
-
-                    </LinearLayout>
-
 
                 </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_margin="10dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_height="300dp">
+
+                    <com.ravikoradiya.zoomableimageview.ZoomableImageView
+                        android:id="@+id/AdvertismentsImageMA"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/place_holder" />
+
+                    <TextView
+                        android:layout_width="36dp"
+                        android:layout_height="wrap_content"
+                        android:padding="3dp"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:background="@color/white"
+                        android:textSize="12dp"
+                        android:textStyle="bold"
+                        android:text="Ads"/>
+
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 

@@ -7,6 +7,7 @@
     tools:context=".AccountActivity">
 
     <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="120dp"
         android:scaleType="fitEnd"
@@ -36,10 +37,10 @@
             android:layout_height="50dp"
             android:background="@drawable/ripple_cr"
             android:clickable="true"
-            android:visibility="gone"
             android:onClick="goBack"
             android:padding="10dp"
             android:src="@drawable/baseline_keyboard_backspace_24"
+            android:visibility="gone"
             app:tint="@color/purple_50" />
 
         <TextView
@@ -56,6 +57,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout11"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -66,28 +68,119 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:padding="5dp"
-            android:clickable="true"
-            android:onClick="Logout"
+            android:layout_height="60dp"
             android:background="@drawable/ripple"
-            android:orientation="horizontal">
+            android:clickable="true"
+            android:gravity="center"
+            android:visibility="gone"
+            android:onClick="HistoryBtn"
+            android:orientation="horizontal"
+            android:padding="8dp">
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/log_out"
-                android:padding="5dp"/>
+                android:padding="5dp"
+                android:src="@drawable/myhistory" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:gravity="center|left"
                 android:padding="10dp"
-                android:textSize="15dp"
-                android:textStyle="bold"
+                android:text="History"
                 android:textColor="@color/black"
-                android:text="Logout"/>
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/ripple"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="Orders"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:src="@drawable/my_orders" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:padding="10dp"
+                android:text="My Orders"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/ripple"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="ChangeOpnBtn"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:src="@drawable/change_pas" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:padding="10dp"
+                android:text="Change Password"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/ripple"
+            android:clickable="true"
+            android:gravity="center"
+            android:onClick="Logout"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                android:src="@drawable/log_out" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:padding="10dp"
+                android:text="Logout"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -223,6 +316,115 @@
 
         </LinearLayout>
 
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ChangeBox"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/dull"
+        android:gravity="bottom"
+        android:visibility="gone"
+        android:clickable="true"
+        android:onClick="CancelBtn"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@drawable/curve_bg"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Change Password"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/black"
+                android:textSize="18dp"/>
+
+            <FrameLayout
+                android:layout_marginTop="5px"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center|left"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/password"/>
+
+                <EditText
+                    android:id="@+id/EditChangePassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center|left"
+                    android:textSize="14dp"
+                    android:hint=" Enter your Password"
+                    android:paddingLeft="35dp"
+                    android:layout_marginTop="2px"
+                    android:inputType="textPassword"
+                    android:text=""
+                    android:textColor="@color/purple_50"
+                    android:textColorHint="#4F575757"
+                    android:textStyle="bold" />
+
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:onClick="CancelBtn"
+                    android:layout_marginEnd="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:textAllCaps="true"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/danger"
+                    android:layout_marginBottom="5px"
+                    android:text="Cancel"/>
+
+                <TextView
+                    android:onClick="ChangeBtn"
+                    android:layout_marginStart="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="14dp"
+                    android:textAllCaps="true"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn"
+                    android:layout_marginBottom="5px"
+                    android:text="Update"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 

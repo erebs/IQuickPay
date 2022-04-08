@@ -6,6 +6,6 @@
         <domain includeSubdomains="true">iquickpay.in</domain>
         <domain includeSubdomains="true">cycloneapi.com</domain>
         <domain includeSubdomains="true">ebshosting.co.in</domain>
-        <domain includeSubdomains="true">ieeesbjcet.org</domain>
+        <domain includeSubdomains="true">ip-api.com/</domain>
     </domain-config>
 </network-security-config>
